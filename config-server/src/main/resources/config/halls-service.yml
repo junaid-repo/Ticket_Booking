@@ -1,9 +1,9 @@
 server:
-  port: 7012
+  port: 9012
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bsaccounts
+    url: jdbc:postgresql://localhost:5432/bthalls
     username: postgres
     password: pass
   jpa:

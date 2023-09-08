@@ -8,10 +8,10 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: STOCK-SERVICE
-          uri: lb://STOCK-SERVICE
+        - id: HALLS-SERVICE
+          uri: lb://HALLS-SERVICE
           predicates:
-            - Path=/bs/stocks/**
+            - Path=/halls**
           filters:
            - AuthenticationFilter  
             
