@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;cloud-gateway&apos;&#x0A;- Original project: &apos;cloud-gateway&apos;&#x0A;- Original elements:&#x0A;     cloud-gateway/src/main/java/com.splitwise.cloudgateway.filter&#x0A;     cloud-gateway/src/main/java/com.splitwise.cloudgateway.util" description="Delete elements" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.splitwise.cloudgateway.util" element2="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.splitwise.cloudgateway.filter" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1694152062454" subPackages="false" version="1.0"/>
+</session>

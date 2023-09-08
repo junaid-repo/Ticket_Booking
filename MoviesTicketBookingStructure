@@ -1,0 +1,27 @@
+HALLS
+    Register Hall details
+    Get Hall Details
+
+
+SEATS
+    Add Seats
+    Update Seats
+    View Seats arrangement
+
+ACCOUNTS
+    View price acc to seats
+    select seats
+    book seats
+    Do payments
+    View your ticket
+
+
+MOVIES
+    Add movies
+    Link Movies to Hall
+    Update movie price
+
+
+USERS
+    Create Accounts
+    Add Details
