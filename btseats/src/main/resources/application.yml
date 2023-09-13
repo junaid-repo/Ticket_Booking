@@ -1,0 +1,5 @@
+spring:
+   application:
+      name: seats-service
+   config:
+    import: "optional:configserver:http://localhost:7088"

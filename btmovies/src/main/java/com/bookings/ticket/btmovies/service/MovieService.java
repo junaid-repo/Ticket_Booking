@@ -29,8 +29,8 @@ public class MovieService {
 	}
 
 	public BaseOutput saveMovieWithHall(MovieHallsList req) {
-		BaseOutput resp= new BaseOutput();
-		resp=(BaseOutput) req.getMovieList().stream().map(obj -> {
+		BaseOutput resp = new BaseOutput();
+		resp = (BaseOutput) req.getMovieList().stream().map(obj -> {
 			BaseOutput response = new BaseOutput();
 
 			hallMovieRepo.save(obj);
@@ -40,7 +40,6 @@ public class MovieService {
 			return response;
 
 		});
-		
 
 		return resp;
 	}

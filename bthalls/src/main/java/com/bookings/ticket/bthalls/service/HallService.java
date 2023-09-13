@@ -38,4 +38,9 @@ public class HallService {
 		return response;
 	}
 
+	public HallDetails getHallDetails(String id) {
+		// TODO Auto-generated method stub
+		return hallSaveRepo.findById(Integer.parseInt(id)).get();
+	}
+
 }

@@ -42,5 +42,14 @@ public class HallsController {
 		return ResponseEntity.status(HttpStatus.FOUND).body(response);
 
 	}
+	@GetMapping("/getHallDetails/{id}")
+	ResponseEntity<HallDetails> getHallDetails(@PathVariable String id) {
+
+		HallDetails response = new HallDetails();
+
+		response = serv.getHallDetails(id);
+		return ResponseEntity.status(HttpStatus.FOUND).body(response);
+
+	}
 
 }
