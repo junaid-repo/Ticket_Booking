@@ -11,14 +11,14 @@ spring:
         - id: HALLS-SERVICE
           uri: lb://HALLS-SERVICE
           predicates:
-            - Path=/halls**
+            - Path=/halls/**
           filters:
            - AuthenticationFilter  
             
-        - id: EMPLOYEE-SERVICE
-          uri: lb://EMPLOYEE-SERVICE
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/bs/employee/**
+            - Path=/bt/users/**
           filters:
            - AuthenticationFilter
            
