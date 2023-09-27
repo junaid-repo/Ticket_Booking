@@ -12,4 +12,6 @@ public interface HallSaveRepository extends JpaRepository<HallDetails, Integer> 
 	@Query(value="select * from Hall_details hd where hd.city=?1", nativeQuery = true)
 	List<HallDetails> findByCity(String city);
 
+	@Query(value="select * from hall_details hd where hd.id=?1", nativeQuery = true)
+	HallDetails getHallDetails(Integer hallId);
 }

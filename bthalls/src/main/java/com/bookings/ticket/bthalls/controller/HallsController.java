@@ -1,7 +1,8 @@
 package com.bookings.ticket.bthalls.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookings.ticket.bthalls.dto.BaseOutput;
 import com.bookings.ticket.bthalls.dto.HallMovieTime;
 import com.bookings.ticket.bthalls.dto.HallsList;
+import com.bookings.ticket.bthalls.dto.MoviesHallDetails;
 import com.bookings.ticket.bthalls.entities.HallDetails;
 import com.bookings.ticket.bthalls.service.HallService;
 
@@ -59,5 +62,10 @@ public class HallsController {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
-
+	@GetMapping("/get/hallsList")
+	ResponseEntity<MoviesHallDetails> movieHalls(@RequestParam LocalDate date, @RequestParam Long pincode, @RequestParam Integer movieId){
+		MoviesHallDetails response=new MoviesHallDetails();
+		response=serv.getMovieDates(date, pincode, movieId);
+		return ResponseEntity.status(HttpStatus.FOUND).body(response);
+	}
 }
