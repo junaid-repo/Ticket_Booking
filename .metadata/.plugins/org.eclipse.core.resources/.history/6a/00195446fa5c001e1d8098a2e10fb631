@@ -1,0 +1,5 @@
+package com.bookings.ticket.bthalls.repository;
+
+public class MovieTimeRepository {
+
+}

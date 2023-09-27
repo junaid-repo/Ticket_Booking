@@ -1,0 +1,55 @@
+package com.bookings.ticket.bthalls.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.bookings.ticket.bthalls.dto.BaseOutput;
+import com.bookings.ticket.bthalls.dto.HallsList;
+import com.bookings.ticket.bthalls.entities.HallDetails;
+import com.bookings.ticket.bthalls.service.HallService;
+
+@RestController
+@RequestMapping("/halls")
+public class HallsController {
+
+	@Autowired
+	HallService serv;
+
+	@PostMapping("/addTheater")
+	ResponseEntity<BaseOutput> addOneTheater(@RequestBody HallDetails req) {
+
+		BaseOutput response = new BaseOutput();
+
+		response = serv.saveHallDetails(req);
+
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
+	}
+
+	@GetMapping("/searchHall/{city}")
+	ResponseEntity<HallsList> searchCity(@PathVariable String city) {
+
+		HallsList response = new HallsList();
+
+		response = serv.getHallsListByCity(city);
+		return ResponseEntity.status(HttpStatus.FOUND).body(response);
+
+	}
+	@GetMapping("/getHallDetails/{id}")
+	ResponseEntity<HallDetails> getHallDetails(@PathVariable String id) {
+
+		HallDetails response = new HallDetails();
+
+		response = serv.getHallDetails(id);
+		return ResponseEntity.status(HttpStatus.FOUND).body(response);
+
+	}
+
+}

@@ -8,14 +8,25 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.bookings.ticket.bthalls.dto.BaseOutput;
+import com.bookings.ticket.bthalls.dto.HallMovieTime;
 import com.bookings.ticket.bthalls.dto.HallsList;
 import com.bookings.ticket.bthalls.entities.HallDetails;
+import com.bookings.ticket.bthalls.entities.MovieDates;
+import com.bookings.ticket.bthalls.entities.MovieTimings;
 import com.bookings.ticket.bthalls.repository.HallSaveRepository;
+import com.bookings.ticket.bthalls.repository.MovieTimeRepository;
+import com.bookings.ticket.bthalls.repository.MovieTimingSaveRepository;
 
 @Service
 public class HallService {
 	@Autowired
 	HallSaveRepository hallSaveRepo;
+	
+	@Autowired
+	MovieTimeRepository movieTimeRepo;
+	
+	@Autowired
+	MovieTimingSaveRepository movieTimeSaveRepo;
 
 	public BaseOutput saveHallDetails(HallDetails req) {
 		BaseOutput response = new BaseOutput();
@@ -41,6 +52,36 @@ public class HallService {
 	public HallDetails getHallDetails(String id) {
 		// TODO Auto-generated method stub
 		return hallSaveRepo.findById(Integer.parseInt(id)).get();
+	}
+
+	public BaseOutput saveDateTime(HallMovieTime req) {
+		
+		Integer hallid=req.getHallId();
+		List<MovieDates> timings=req.getDates();
+		BaseOutput response = new BaseOutput();
+		
+		timings.stream().forEach(obj->{
+			obj.setHallId(hallid);
+			List<MovieTimings> timing=obj.getTime();
+			MovieDates out1=new MovieDates();
+			out1=movieTimeRepo.save(obj);
+			
+			final Integer movieDateId=out1.getId();
+			
+			if(movieDateId!=null) {
+				timing.stream().forEach(tim->{
+					tim.setMvoieDateId(movieDateId);
+					MovieTimings out = new MovieTimings();
+					out=movieTimeSaveRepo.save(tim);
+				});
+			}
+			
+		});
+		
+		response.setReturnCode(201);
+		response.setReturnMsg("Saved");
+		
+		return response;
 	}
 
 }

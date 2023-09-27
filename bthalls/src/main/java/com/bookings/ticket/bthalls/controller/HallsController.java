@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bookings.ticket.bthalls.dto.BaseOutput;
+import com.bookings.ticket.bthalls.dto.HallMovieTime;
 import com.bookings.ticket.bthalls.dto.HallsList;
 import com.bookings.ticket.bthalls.entities.HallDetails;
 import com.bookings.ticket.bthalls.service.HallService;
@@ -50,6 +51,13 @@ public class HallsController {
 		response = serv.getHallDetails(id);
 		return ResponseEntity.status(HttpStatus.FOUND).body(response);
 
+	}
+	@PostMapping("/setDateAndTime")
+	ResponseEntity<BaseOutput> setDateAndTime(@RequestBody HallMovieTime req){
+		BaseOutput response = new BaseOutput();
+		response=serv.saveDateTime(req);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 }

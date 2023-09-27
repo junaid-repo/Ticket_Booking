@@ -43,10 +43,10 @@ spring:
           filters:
            - AuthenticationFilter
            
-        - id: MEDSTOCKS-SERVICE
-          uri: lb://MEDSTOCKS-SERVICE
+        - id: MOVIES-SERVICE
+          uri: lb://MOVIES-SERVICE
           predicates:
-            - Path=/bs/medStocks/**
+            - Path=/bt/shows/**
           filters:
            - AuthenticationFilter 
            

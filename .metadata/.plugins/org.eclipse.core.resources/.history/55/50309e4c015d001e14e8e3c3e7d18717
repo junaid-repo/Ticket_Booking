@@ -1,0 +1,66 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: API-GATEWAY
+
+
+  cloud:
+    gateway:
+      routes:
+        - id: HALLS-SERVICE
+          uri: lb://HALLS-SERVICE
+          predicates:
+            - Path=/halls/**
+          filters:
+           - AuthenticationFilter  
+            
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/bt/users/**
+          filters:
+           - AuthenticationFilter
+           
+        - id: ACCOUNTS-SERVICE
+          uri: lb://ACCOUNTS-SERVICE
+          predicates:
+            - Path=/bs/accounts/**
+          filters:
+           - AuthenticationFilter
+            
+        - id: EXTRACHARGES-SERVICE
+          uri: lb://EXTRACHARGES-SERVICE
+          predicates:
+            - Path=/bs/charges/**
+          filters:
+           - AuthenticationFilter
+           
+        - id: CUSTOMER-SERVICE
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/bs/customer/**
+          filters:
+           - AuthenticationFilter
+           
+        - id: MOVIES-SERVICE
+          uri: lb://MOVIES-SERVICE
+          predicates:
+            - Path=/shows/**
+          filters:
+           - AuthenticationFilter 
+           
+        - id: API-GATEWAY
+          uri: lb://API-GATEWAY
+          predicates:
+            - Path=/bs/employee/**
+          filters:
+           - AuthenticationFilter                           
+           
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka

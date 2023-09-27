@@ -14,7 +14,7 @@ import com.bookings.ticket.btmovies.entities.MovieDetails;
 import com.bookings.ticket.btmovies.service.MovieService;
 
 @RestController
-@RequestMapping("/shows")
+@RequestMapping("/bt/shows")
 public class MoviesContoller {
 
 	@Autowired
@@ -38,5 +38,6 @@ public class MoviesContoller {
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
+
 
 }
